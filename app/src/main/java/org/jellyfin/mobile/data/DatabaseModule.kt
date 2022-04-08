@@ -7,11 +7,11 @@ import org.koin.dsl.module
 val databaseModule = module {
     single {
         Room.databaseBuilder(androidApplication(), JellyfinDatabase::class.java, "jellyfin")
-            .addMigrations()
-            .fallbackToDestructiveMigrationFrom(1)
-            .fallbackToDestructiveMigrationOnDowngrade()
+            .createFromAsset("database/galaxyinit.db")
             .build()
     }
     single { get<JellyfinDatabase>().serverDao }
     single { get<JellyfinDatabase>().userDao }
 }
+
+
