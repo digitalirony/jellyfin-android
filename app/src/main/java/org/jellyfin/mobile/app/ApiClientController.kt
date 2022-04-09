@@ -48,6 +48,7 @@ class ApiClientController(
 
     suspend fun loadSavedServer(): ServerEntity? {
         val server = withContext(Dispatchers.IO) {
+            //appPreferences.currentServerId = 1
             val serverId = appPreferences.currentServerId ?: return@withContext null
             serverDao.getServer(serverId)
         }

@@ -15,7 +15,7 @@ class AppPreferences(context: Context) {
         context.getSharedPreferences("${context.packageName}_preferences", Context.MODE_PRIVATE)
 
     var currentServerId: Long?
-        get() = sharedPreferences.getLong(Constants.PREF_SERVER_ID, -1).takeIf { it >= 0 }
+        get() = sharedPreferences.getLong(Constants.PREF_SERVER_ID, 1).takeIf { it >= 0 }
         set(value) {
             sharedPreferences.edit {
                 if (value != null) putLong(Constants.PREF_SERVER_ID, value) else remove(Constants.PREF_SERVER_ID)
